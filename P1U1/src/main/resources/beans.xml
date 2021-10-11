@@ -7,6 +7,6 @@
 
     <bean id="service" class="com.asos.p1u1.MessageServiceMock"/>
     <bean id="processor" class="com.asos.p1u1.MessageProcessor">
-        <constructor-arg ref="service"/>
+        <property name="messageService" ref="service"/>
     </bean>
 </beans>

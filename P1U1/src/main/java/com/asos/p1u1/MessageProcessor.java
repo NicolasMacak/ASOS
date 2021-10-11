@@ -11,8 +11,8 @@ package com.asos.p1u1;
  */
 public class MessageProcessor {
     private MessageServiceIfc messageService;
-    
-    public MessageProcessor(MessageServiceIfc messageService){
+    // odrazene from P1U1
+    public void setMessageService(MessageServiceIfc messageService) {
         this.messageService = messageService;
     }
     
