@@ -12,7 +12,7 @@ package com.asos.p1u1;
 public class MessageProcessor {
     private MessageServiceIfc messageService;
     // odrazene from P1U1
-    public void setMessageService(MessageServiceIfc messageService) {
+        public void setMessageService(MessageServiceIfc messageService) { //setter tu musi byt je pouzity by autowire
         this.messageService = messageService;
     }
     
