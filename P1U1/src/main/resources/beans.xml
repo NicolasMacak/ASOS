@@ -22,10 +22,18 @@
     
         <aop:config>  
         <aop:aspect id="myaspect" ref="aspectBean" >  
-
             <!-- @Before -->  
             <aop:pointcut id="pointCutBefore"   expression="execution(* com.asos.p1u1.*.*.*(..))" />  
             <aop:before method="myBeforeAdvice" pointcut-ref="pointCutBefore" />  
+        </aop:aspect>  
+        
+        <aop:aspect id="aspectMojejManky" ref="aspectBean" >  
+
+            <!-- p2u3 we ll be, we ll be counting calls-->  
+<!--            <aop:pointcut id="countingCalls"   expression="execution(* com.asos.p1u1.*.*.*(..)" />  
+            <aop:after-returning method="myReturnAdvice" pointcut-ref="countingCalls" />  -->
+            <aop:pointcut id="countingCalls"   expression="execution(* com.asos.p1u1.cv1.MessageServiceMock.getMessage())" />  
+            <aop:after-returning method="myReturnAdvice" returning="result" pointcut-ref="countingCalls" /> 
         </aop:aspect>  
     </aop:config>  
 </beans>

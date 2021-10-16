@@ -14,6 +14,8 @@ import org.springframework.util.StopWatch;
  * @author edu
  */
 public class MyAspectBean {
+    private int countedMsgCalls = 0;
+    
         public void myBeforeAdvice(JoinPoint jp)  
     {
         System.out.println("\tmy before advice");
@@ -25,6 +27,7 @@ public class MyAspectBean {
     {
         System.out.println("\tmy return advice");
         System.out.println("\tResult in advice: " + result);
+        countedMsgCalls++;
     }
 
     /* zisti a vypise dobu vykonavania volanej metody */
@@ -41,5 +44,9 @@ public class MyAspectBean {
             clock.stop();
             System.out.println(clock.prettyPrint());
         }
+    }
+    
+    public void printAfaterRunData(){
+        System.out.println("Odporny skret janko " + countedMsgCalls);
     }
 }

@@ -22,6 +22,13 @@ public class P1U1 {
 
         MessageProcessor mp = context.getBean("processor", MessageProcessor.class);
         mp.processMessage();
+        mp.processMessage();
+        mp.processMessage();
+        
+        System.out.println("---------------- Counting processMessage calls");
+        
+        MyAspectBean aspectorDetector = context.getBean("aspectBean", MyAspectBean.class);
+        aspectorDetector.printAfaterRunData();
 //        MyOperationBean bean = (MyOperationBean) context.getBean("opBean");
 //        System.out.println("----------calling m...");
 //        bean.m();
