@@ -24,8 +24,31 @@
         <aop:aspect id="myaspect" ref="aspectBean" >  
 
             <!-- @Before -->  
-            <aop:pointcut id="pointCutBefore"   expression="execution(* com.asos.p1u1.*.*.*(..))" />  
+           <aop:pointcut id="pointCutBefore"   expression="execution(* com.asos.p1u1.*.*.*(..))" />  
             <aop:before method="myBeforeAdvice" pointcut-ref="pointCutBefore" />  
-        </aop:aspect>  
+        </aop:aspect>   
+        
+<!--                <aop:aspect id="aspectMojejManky" ref="aspectBean" >  
+
+             p2u3 we ll be, we ll be counting calls  
+            <aop:pointcut id="countingCalls"   expression="execution(* com.asos.p1u1.*.*.*(..)" />  
+            <aop:after-returning method="myReturnAdvice" pointcut-ref="countingCalls" />  
+            <aop:pointcut id="countingCalls"   expression="execution(* com.asos.p1u1.cv1.MessageServiceMock.getMessage())" />  
+            <aop:after-returning method="myReturnAdvice" returning="result" pointcut-ref="countingCalls" /> 
+        </aop:aspect> 
+        -->
+        <aop:aspect id="aspectPavukaJozka" ref="aspectBean" >  
+
+             <!--@Before-->   
+            <aop:pointcut id="someId"   expression="execution(* com.asos.p1u1.cv1.MessageServiceMock.getMessage())" />
+            <aop:around method="zakodujProsimTa" pointcut-ref="someId" />  
+        </aop:aspect> 
+        
+        <aop:aspect id="aspectOslavencaKuba" ref="aspectBean" >  
+
+             <!--@Before-->   
+            <aop:pointcut id="sekyhoDarcek"   expression="execution(* com.asos.p1u1.cv2.MessageConsumerMock.putMessage(String)) and args(msg)" />
+            <aop:around method="odkodujProsimTa" pointcut-ref="sekyhoDarcek" />  
+        </aop:aspect> 
     </aop:config>  
 </beans>

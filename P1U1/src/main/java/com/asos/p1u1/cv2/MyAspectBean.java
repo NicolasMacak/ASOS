@@ -26,6 +26,36 @@ public class MyAspectBean {
         System.out.println("\tmy return advice");
         System.out.println("\tResult in advice: " + result);
     }
+    
+    public Object odkodujProsimTa(ProceedingJoinPoint call, String msg) throws Throwable
+    {
+        try{
+        Object[] changedReturn= {msg + " To uz su aj odkovane"};
+        return call.proceed(changedReturn);
+        }
+        finally {
+        System.out.println("ta odsifroval som");
+        
+        }   
+    }
+    
+    public Object zakodujProsimTa(ProceedingJoinPoint call) throws Throwable
+    {
+        Object message;
+//        Object[] changedReturn= {" haky baky"};
+        try{
+        message = call.proceed();
+        return message + "haky baky";
+        }
+        finally {
+        System.out.println("ta zasifroval som");
+        
+        
+    }
+//        return "sigh";
+//        System.out.println("Dobre sak kodujem "+message);
+//        return message + " haha kody";
+    }
 
     /* zisti a vypise dobu vykonavania volanej metody */
     public Object myAroundAdvice(ProceedingJoinPoint call, String message) throws Throwable {
