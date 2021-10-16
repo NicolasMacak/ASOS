@@ -5,6 +5,9 @@
  */
 package com.asos.p1u1;
 
+import com.asos.p1u1.cv1.MessageProcessor;
+import com.asos.p1u1.cv2.MyAspectBean;
+import com.asos.p1u1.cv2.MyOperationBean;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -19,5 +22,12 @@ public class P1U1 {
 
         MessageProcessor mp = context.getBean("processor", MessageProcessor.class);
         mp.processMessage();
+//        MyOperationBean bean = (MyOperationBean) context.getBean("opBean");
+//        System.out.println("----------calling m...");
+//        bean.m();
+//        System.out.println("----------calling k...");
+//        bean.k();
+//        System.out.println("----------calling msg...");
+//        bean.msg("hello");
     }
 }

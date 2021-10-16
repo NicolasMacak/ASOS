@@ -1,16 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       
+        xsi:schemaLocation="http://www.springframework.org/schema/beans 
+                            http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+                            http://www.springframework.org/schema/aop 
+                            http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
 ">
 
 
-    <bean id="service" class="com.asos.p1u1.MessageServiceMock"/>
+    <bean id="service" class="com.asos.p1u1.cv1.MessageServiceMock"/>
     <bean id="consumer" class="com.asos.p1u1.cv2.MessageConsumerMock"/>
-    <bean id="processor" class="com.asos.p1u1.MessageProcessor">
+    <bean id="processor" class="com.asos.p1u1.cv1.MessageProcessor">
         <constructor-arg ref="service"/>
         <constructor-arg ref="consumer"/>
     </bean>
     
+    <bean id="opBean" class="com.asos.p1u1.cv2.MyOperationBean"/>
+    <bean id="aspectBean" class="com.asos.p1u1.cv2.MyAspectBean"/>
+    
+        <aop:config>  
+        <aop:aspect id="myaspect" ref="aspectBean" >  
+
+            <!-- @Before -->  
+            <aop:pointcut id="pointCutBefore"   expression="execution(* com.asos.p1u1.*.*.*(..))" />  
+            <aop:before method="myBeforeAdvice" pointcut-ref="pointCutBefore" />  
+        </aop:aspect>  
+    </aop:config>  
 </beans>
