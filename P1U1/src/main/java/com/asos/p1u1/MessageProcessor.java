@@ -5,18 +5,22 @@
  */
 package com.asos.p1u1;
 
+import com.asos.p1u1.cv2.MessageConsumerIfc;
+
 /**
  *
  * @author edu
  */
 public class MessageProcessor {
     private MessageServiceIfc messageService;
+    private MessageConsumerIfc consumer;
     
-    public MessageProcessor(MessageServiceIfc messageService){
+    public MessageProcessor(MessageServiceIfc messageService, MessageConsumerIfc consumer){
         this.messageService = messageService;
+        this.consumer = consumer;
     }
     
     public void processMessage(){
-        System.out.println(messageService.getMessage());
+        consumer.putMessage(messageService.getMessage());
     }
 }
